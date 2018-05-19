@@ -1,0 +1,27 @@
+version: '2'
+services:
+    app:
+        restart: always
+        build: ./app
+        networks:
+            - mainnet
+        volumes:
+          - ./app:/usr/src/app
+    nginx:
+        restart: always
+        build: ./nginx
+        networks:
+            - mainnet
+        links:
+            - app
+        volumes:
+            - ./nginx:/usr/share/nginx/html
+        ports:
+            - "80:8080"
+    sshd:
+        restart: always
+        build: ./sshd
+        ports: 
+            - "2001:22"
+networks:
+    mainnet:

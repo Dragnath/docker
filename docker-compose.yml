@@ -1,12 +1,10 @@
 version: '2'
 services:
-    app:
+    sshd:
         restart: always
-        build: ./app
-        networks:
-            - mainnet
-        volumes:
-          - ./app:/usr/src/app
+        build: ./sshd
+        ports:
+            - "2001:22"
     nginx:
         restart: always
         build: ./nginx
@@ -18,10 +16,14 @@ services:
             - ./nginx:/usr/share/nginx/html
         ports:
             - "80:8080"
-    sshd:
+    app:
         restart: always
-        build: ./sshd
-        ports: 
-            - "2001:22"
+        build: ./app
+        networks:
+            - mainnet
+        volumes:
+          - ./app:/usr/src/app
+        depends_on:
+          - sshd
 networks:
     mainnet:

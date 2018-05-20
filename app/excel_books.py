@@ -1,10 +1,10 @@
 import xlrd
 from collections import OrderedDict
 import simplejson as json
+import modules.settings as st
+excel_sheet = 'resources/Books.xlsx'
 
-file = './Books.xlsx'
-
-wb = xlrd.open_workbook(file)
+wb = xlrd.open_workbook(st.excel_sheet)
 sh = wb.sheet_by_index(0)
 
 books_list = []

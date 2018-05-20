@@ -2,3 +2,6 @@ flask
 flask-restful
 xlrd
 simplejson
+requests
+paramiko
+scp

@@ -2,16 +2,15 @@ import xlrd
 from collections import OrderedDict
 import simplejson as json
 import modules.settings as st
-excel_sheet = 'resources/Books.xlsx'
 
 wb = xlrd.open_workbook(st.excel_sheet)
 sh = wb.sheet_by_index(0)
 
 books_list = []
 
-for rownum in range(2, sh.nrows):
+for row_num in range(2, sh.nrows):
     books = OrderedDict()
-    row_values = sh.row_values(rownum)
+    row_values = sh.row_values(row_num)
     books['ID'] = int(row_values[0])
     books['Name'] = row_values[1]
     books['Surname'] = row_values[2]

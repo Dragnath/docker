@@ -16,5 +16,5 @@ ip_url = "http://localhost/user"
 # api.py variables
 url = 'http://localhost/book'
 
-# move_file.py variables
+# excel_books.py variables
 excel_sheet = 'resources/Books.xlsx'

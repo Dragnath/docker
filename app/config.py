@@ -1,10 +1,15 @@
 from flask import make_response
-import requests
 
 JSON_MIME_TYPE = 'application/json'
 
 
 def search_book(books, book_id):
+    """
+    Gets book by ID.
+    :param books: json with all books.
+    :param book_id: int
+    :return: json for book with given ID
+    """
     for book in books:
         if book['ID'] == book_id:
             return book
